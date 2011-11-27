@@ -1,0 +1,218 @@
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	min-width:700px;}
+
+div {
+	margin: 0 auto;}
+
+
+.header{
+	background-color:#666666;
+	color:#ffffff;
+	font-weight:normal;
+	font-size:12px;
+	font-family:Verdana, Arial, Helvetica, sans-serif}
+
+div#error_message {
+	border: 1px solid #990000;
+	color: #FFFFFF;
+	background-color: #FF6262;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 10px 0;
+	padding: 5px;}
+
+div#success_message {
+	border: 1px solid #006600;
+	background-color: #5ABD5A;
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFFFFF;
+	padding: 5px;
+	margin: 10px 0;}
+
+div#header {
+	padding: 0;
+	margin: 0;
+	height: 80px;
+	background-color: #3366FF;
+	position: relative;}
+
+div#header_title {
+	padding: 10px;
+	color: #FFFFFF;
+	font-size: 24px;
+	float:left}
+
+#nav_tabs {
+	background-color: #3366FF;
+	position: absolute;
+	width: 100%;
+	bottom: 0px;}
+
+#nav_tabs ul {
+	padding: 0;
+	margin: 0;
+}
+
+#nav_tabs li {
+	float:left;
+	list-style-type: none;
+	display: inline;
+	background-color: #003366;
+	padding: 4px 0; /* 1px less padding for IE */
+	margin: 0 1px;
+}
+
+#nav_tabs a {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	color: #FFFFFF;
+	font-weight: bold;
+	text-decoration: none;
+	padding: 5px 10px;}
+
+#nav_tabs a:hover {
+	background-color: #FFFFFF;
+	color: #003366;
+ 	padding: 5px 10px;}
+
+#nav_tabs .selected a {
+	font-weight: bold;
+	color: #0066CC;
+	background-color: #FFFFFF;
+	padding: 5px 10px;}
+
+#nav_tabs .selected a:hover {
+	font-weight: bold;
+	color: #0066CC;
+}
+
+#nav_tabs .selected_subnav a {
+	font-weight: bold;
+	color: #003366;
+	background-color: #EEEEEE;
+	padding: 5px 10px;}
+
+#nav_tabs .selected_subnav a:hover {
+	color: #0066CC;
+	background-color: #EEEEEE;}
+
+#nav_tabs .right {
+	float: right;
+}
+
+#nav_tabs .far_right {
+	float: right;
+	margin-right: 10px;
+}
+
+div#content {
+	margin: 10px;
+	padding:0 10px 0 10px;
+	min-height: 400px;}
+
+.info_table{
+	border-collapse:collapse;
+	margin:0pt;
+	padding:0pt;
+	width:100%;}
+
+.info_table th {
+	background-color:#6699CC;
+	color: #FFFFFF;
+	border: 1px solid #FFFFFF;
+	padding: 5px;}
+
+.info_table tr.header{ 
+	background-color:#666666;  
+	color:#ffffff; 
+	font-weight:normal; 
+	font-size:12px; 
+	font-family:Verdana, Arial, Helvetica, sans-serif}
+
+.info_table tr.gray_row{
+	background-color:#eeeeee;}
+
+.info_table tr.selected_row{
+	background-color:#5ABD5A;}
+
+.info_table td {
+	border: 1px solid #FFFFFF;
+	padding: 5px;}
+
+.tree_diagram{
+    border-spacing: 0px;
+    border-collapse:collapse;
+    margin:0pt;
+    padding:0pt;}
+
+.tree_diagram td {
+    border-spacing: 0px;
+	border: 0px;
+	padding: 0px;}
+
+.tree_diagram tr.header{
+	background-color:#666666;
+	color:#ffffff;
+    border-spacing: 2px;
+	font-weight:normal;
+	font-size:12px;
+	font-family:Verdana, Arial, Helvetica, sans-serif}
+
+.tree_diagram tr.header td{
+    padding: 5px;}
+
+.tree_diagram div.tree_leaf {
+    border: 0px solid #000000;
+    font-size:14px;
+    font-weight: bold;
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;}
+
+.tree_diagram div.tree_node {
+    text-align: center;
+    border: 1px solid #000000;
+    padding-left: 5px;
+    padding-right: 5px;}
+
+.tree_cell{
+    border-collapse:collapse;
+    padding:0px;
+    width: 100%;
+	height: 30px;}
+
+.tree_cell td {
+    min-width: 8px;
+    border-spacing: 0px;
+	width: 100%;
+	height: 100%;}
+
+.gray_span{
+	background-color:#eeeeee;
+    font-family:monospace;
+    font-size:14px;
+    border-spacing: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 2px;
+    margin-bottom: 6px;}
+
+
+.white_span{
+	background-color:#ffffff;
+    font-family:monospace;
+    font-size:14px;
+    border-spacing: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 2px;
+    margin-bottom: 6px;}

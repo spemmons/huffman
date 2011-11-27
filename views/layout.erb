@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+  <title>Huffman Coding Demo</title>
+  <link rel="stylesheet" type="text/css" href="/styles.css"/>
+</head>
+
+<body>
+<div id="header">
+  <div id="header_title">CSE5311 &dash; Huffman Coding Demo &dash; Steve Emmons</div>
+
+  <div id="nav_tabs">
+    <ul>
+      <li<% if request.path_info == '/' %> class="selected"<% end %> style="margin-left: 10px"><a href="/">Summary</a></li>
+      <li<% if request.path_info =~ /^\/tree/ %> class="selected"<% end %>><a href="/tree/<%= @current_filename || files.keys.sort.first %>">Code Tree</a></li>
+      <li<% if request.path_info =~ /^\/encode/ %> class="selected"<% end %>><a href="/encode/<%= @current_filename || files.keys.sort.first %>">Encoded Data</a></li>
+      <li class="far_right"><a href="/reset">Reset</a></li>
+    </ul>
+  </div>
+
+</div>
+
+<div id="content">
+  <% if @error %>
+    <div id="error_message"><%= @error %></div>
+  <% end %>
+  <% if @success %>
+    <div id="success_message"><%= @success %></div>
+  <% end %>
+  <table class="info_table">
+    <tr class="header"><td colspan="11">File Statistics</td></tr>
+    <tr>
+      <th></th>
+      <th>Filename</th>
+      <th>Original Size (bytes)</th>
+      <th>Original Size (bits)</th>
+      <th>Encoded Size (bits)</th>
+      <th>Compression (%)</th>
+      <th>Symbols Encountered</th>
+      <th>Maximum Entropy</th>
+      <th>Actual Entropy</th>
+      <th>Average Bits/Symbol</th>
+      <th></th>
+    </tr>
+    <% files.keys.sort.each do |filename|
+        file_info = files[filename] %>
+        <tr class="<%= (style = cycle('gray_row', '')) && (filename == @current_filename ? 'selected_row' : style) %>">
+          <td><a href="/tree/<%= filename %>">tree</a></td>
+          <td><%= filename %></td>
+          <td align="center"><%= commafy(file_info[:size]) %></td>
+          <td align="center"><%= commafy(original_bits = file_info[:size] * 8) %></td>
+          <td align="center"><%= commafy(file_info[:bit_length]) if file_info[:bit_length] %></td>
+          <td align="center"><%= format('%0.1f%',100.0 - file_info[:bit_length].to_f / original_bits.to_f * 100) if file_info[:bit_length] %></td>
+          <td align="center"><%= file_info[:symbol_count] if file_info[:symbol_count] %></td>
+          <td align="center"><%= format('%0.4f',Math.log2(file_info[:symbol_count])) if file_info[:symbol_count] %></td>
+          <td align="center"><%= format('%0.4f',file_info[:entropy]) if file_info[:entropy] %></td>
+          <td align="center"><%= format('%0.4f',file_info[:bit_length].to_f / file_info[:size].to_f) if file_info[:bit_length] %></td>
+          <td><a href="/encode/<%= filename %>">encode</a></td>
+        </tr>
+    <% end %>
+    <tr><td>&nbsp;</td></tr>
+  </table>
+  <%= yield %>
+</div>
+</body>
+</html>

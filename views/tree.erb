@@ -1,0 +1,39 @@
+<% if @huffman and (output = @huffman.dump_tree(@huffman.code_tree)) %>
+    <div align="center">
+      <table class="tree_diagram">
+          <tr class="header"><td colspan="<%= output.first.length + 1 %>">Code Tree for '<%= @current_filename %>'</td></tr>
+        <tr><td>&nbsp;</td></tr>
+          <% p_format = min_format(@huffman.total_bytes) %>
+          <% output.each do |row| %>
+              <tr>
+                  <% if row.first %>
+                    <td nowrap><div class="tree_leaf"><%= row.first.label %></div></td>
+                  <% else %>
+                      <td></td>
+                  <% end %>
+                  <% row.each do |cell| %>
+                      <td nowrap>
+                          <% case cell
+                                 when ByteNode %>
+                                  <div class="tree_node">
+                                    <%= "#{commafy(cell.count)} (#{format(p_format,cell.count.to_f / @huffman.total_bytes)})" %>
+                                    <% if cell.code != '' %><br/><span style="background-color: #eeeeee; padding-left: 2px; padding-right: 2px;"><%= cell.code %></span><% end %>
+                                  </div>
+                              <% when '---' %>
+                                  <table class="tree_cell"><tr><td style="border-bottom: 2px solid #000000;">&nbsp;</td><td style="border-bottom: 2px solid #000000;">&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td></tr></table>
+                              <% when '-^ ' %>
+                                  <table class="tree_cell"><tr><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td style="border-top: 2px solid #000000;border-right: 2px solid #000000;">&nbsp;</td><td>&nbsp;</td></tr></table>
+                              <% when '-v ' %>
+                                  <table class="tree_cell"><tr><td style="border-bottom: 2px solid #000000;border-right: 2px solid #000000;">&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td></tr></table>
+                              <% when ' | ' %>
+                                  <table class="tree_cell"><tr><td style="border-right: 2px solid #000000;">&nbsp;</td><td>&nbsp;</td></tr><tr><td style="border-right: 2px solid #000000;">&nbsp;</td><td>&nbsp;</td></tr></table>
+                              <% when ' +-' %>
+                                  <table class="tree_cell"><tr><td style="border-right: 2px solid #000000;">&nbsp;</td><td style="border-bottom: 2px solid #000000;">&nbsp;</td></tr><tr><td style="border-right: 2px solid #000000;">&nbsp;</td><td>&nbsp;</td></tr></table>
+                          <% end %>
+                      </td>
+                  <% end %>
+              </tr>
+          <% end %>
+      </table>
+    </div>
+<% end %>

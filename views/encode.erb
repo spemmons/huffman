@@ -1,0 +1,48 @@
+<script>
+  function togglecolors(style) {
+    style.color = style.color ? '' : '#FFFFFF';
+    style.background = style.background ? '' : '#000000';
+  }
+  function showone(id) {
+    var style = document.getElementById(id).style;
+    style.fontWeight = "bold";
+    style.textDecoration = "underline";
+    togglecolors(style);
+  }
+  function hideone(id) {
+    var style = document.getElementById(id).style;
+    style.fontWeight = "normal";
+    style.textDecoration = "none";
+    togglecolors(style);
+  }
+  function showpair(index) {
+      showone("byte" + index.toString());
+      showone("bit" + index.toString());
+  }
+  function hidepair(index) {
+      hideone("byte" + index.toString());
+      hideone("bit" + index.toString());
+  }
+</script>
+
+<table style="width:100%">
+  <tr>
+    <td valign="top" style="min-width: 40%;">
+        <% if @original_bytes %>
+            <table class="info_table">
+                <tr class="header"><td>Original File</td></tr>
+                <tr><td><% @original_bytes.each_with_index do |byte,index| %><span id="byte<%= index %>" class="<%= cycle('gray_span', 'white_span') %>" onmouseover="showpair(<%= index %>)" onmouseout="hidepair(<%= index %>)"><%= (value = format('%c',byte)) == "\n" ? "\\n<br\>" : value == "\t" ? "\\t" : value %></span><% end %></td></tr>
+            </table>
+        <% end %>
+    </td>
+    <td valign="top">
+        <% if @encoded_bits %>
+            <table class="info_table">
+                <tr class="header"><td>Encoded Bits</td></tr>
+                <tr><td><% @encoded_bits.each_with_index do |code,index| %><span id="bit<%= index %>" class="<%= cycle('gray_span', 'white_span') %>" onmouseover="showpair(<%= index %>)" onmouseout="hidepair(<%= index %>)"><%= code %></span> <% end %></td></tr>
+            </table>
+        <% end %>
+    </td>
+  </tr>
+</table>
+

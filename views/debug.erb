@@ -1,0 +1,43 @@
+<table class="info_table">
+    <tr class="header"><td colspan="10">Files</td></tr>
+    <tr><th>Attribute</th><th>Value</th></tr>
+    <% files.keys.sort.each do |key| %>
+        <tr class="<%= cycle('gray_row', '') %>"><td><%= key %></td><td><%= truncate(files[key]) %></td></tr>
+    <% end %>
+    <tr><td>&nbsp;</td></tr>
+    <tr class="header"><td colspan="10">Session</td></tr>
+    <tr><th>Attribute</th><th>Value</th></tr>
+    <% session.keys.sort.each do |key| %>
+        <tr class="<%= cycle('gray_row', '') %>"><td><%= key %></td><td><%= truncate(session[key]) %></td></tr>
+    <% end %>
+    <tr><td>&nbsp;</td></tr>
+    <tr class="header"><td colspan="10">Request</td></tr>
+    <tr><th>Attribute</th><th>Value</th></tr>
+    <tr class="<%= cycle('gray_row', '') %>"><td>request.accept</td><td><%= request.accept %></td></tr>
+    <tr class="<%= cycle('gray_row', '') %>"><td>request.body</td><td><%= request.body %></td></tr>
+    <tr class="<%= cycle('gray_row', '') %>"><td>request.scheme</td><td><%= request.scheme %></td></tr>
+    <tr class="<%= cycle('gray_row', '') %>"><td>request.script_name</td><td><%= request.script_name %></td></tr>
+    <tr class="<%= cycle('gray_row', '') %>"><td>request.path_info</td><td><%= request.path_info %></td></tr>
+    <tr class="<%= cycle('gray_row', '') %>"><td>request.port</td><td><%= request.port %></td></tr>
+    <tr class="<%= cycle('gray_row', '') %>"><td>request.request_method</td><td><%= request.request_method %></td></tr>
+    <tr class="<%= cycle('gray_row', '') %>"><td>request.query_string</td><td><%= request.query_string %></td></tr>
+    <tr class="<%= cycle('gray_row', '') %>"><td>request.content_length</td><td><%= request.content_length %></td></tr>
+    <tr class="<%= cycle('gray_row', '') %>"><td>request.media_type</td><td><%= request.media_type %></td></tr>
+    <tr class="<%= cycle('gray_row', '') %>"><td>request.host</td><td><%= request.host %></td></tr>
+    <tr class="<%= cycle('gray_row', '') %>"><td>request.get?</td><td><%= request.get? %></td></tr>
+    <tr class="<%= cycle('gray_row', '') %>"><td>request.form_data?</td><td><%= request.form_data? %></td></tr>
+    <tr class="<%= cycle('gray_row', '') %>"><td>request.referrer</td><td><%= request.referrer %></td></tr>
+    <tr class="<%= cycle('gray_row', '') %>"><td>request.user_agent</td><td><%= request.user_agent %></td></tr>
+    <tr class="<%= cycle('gray_row', '') %>"><td>request.xhr?</td><td><%= request.xhr? %></td></tr>
+    <tr class="<%= cycle('gray_row', '') %>"><td>request.url</td><td><%= request.url %></td></tr>
+    <tr class="<%= cycle('gray_row', '') %>"><td>request.path</td><td><%= request.path %></td></tr>
+    <tr class="<%= cycle('gray_row', '') %>"><td>request.ip</td><td><%= request.ip %></td></tr>
+    <tr class="<%= cycle('gray_row', '') %>"><td>request.secure?</td><td><%= request.secure? %></td></tr>
+    <tr class="<%= cycle('gray_row', '') %>"><td>request.forwarded?</td><td><%= request.forwarded? %></td></tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr class="header"><td colspan="10">Environment</td></tr>
+    <tr><th>Attribute</th><th>Value</th></tr>
+    <% request.env.keys.sort.each do |key| %>
+        <tr class="<%= cycle('gray_row', '') %>"><td><%= key %></td><td><%= truncate(request.env[key]) %></td></tr>
+    <% end %>
+</table>
