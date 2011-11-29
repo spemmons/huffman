@@ -1,1 +1,29 @@
-This file was created by JetBrains RubyMine 3.2.4 for binding GitHub repository
+This is an implementation of Huffman encoding/decoding using a Binary Search Tree and Binary Min Heap.
+
+- huffman.rb: Huffman class for encoding of files and byte streams, plus decoding of bit streams
+
+- byte_node.rb: ByteNode class used to represent the BST; 'byte' field is non-nil for leaves
+
+- heap_util.rb: HeapUtil module defining essential operations for heaps -- build_heap, add_to_heap, and remove_heap_min
+
+- count_util.rb: CountUtil module for counting operations for algorithm analysis
+
+- console_util.rb: ConsoleUtil module for helper methods to dump/print data to the console
+
+- huffman_demo.rb: Sinatra HTTP actions for displaying Huffman results in a web application
+
+- views/*.erb: HTML views corresponding to Sinatra HTTP actions for rendering web pages
+
+- public/*: static files (e.g., CSS) referenced in web pages
+
+- files/*.txt: test files used to test/verify Huffman encoding/decoding
+
+- test.rb: script to enumerate test files and verify correct handling of Huffman encoding/decoding
+
+- config.*: configuration files for running the huffman_demo.rb Sinatra application
+
+Execution instructions:
+
+- Use "thin" to execute the Sinatra demo application: thin start -C config.yml
+
+- Use "irb" to access the console, using the following to test, for example: load 'test.rb'
