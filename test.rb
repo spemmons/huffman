@@ -2,6 +2,7 @@ load 'huffman.rb'
 
 def test_file(filename)
   huffman = Huffman.new
+#  huffman.output = false
   puts "FILE:#{filename}"
   original_bytes = huffman.update_counts_from_file(filename)
   puts "...BYTES:#{original_bytes.length}\n...ORIGINAL:#{original_bytes.length * 8}"
